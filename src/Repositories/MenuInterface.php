@@ -18,30 +18,19 @@ interface MenuInterface extends RepositoryInterface
     /**
      * Get all models.
      *
-     * @param bool  $all  Show published or all
      * @param array $with Eager load related models
+     * @param bool  $all  Show published or all
      *
-     * @return Collection
+     * @return \Illuminate\Database\Eloquent\Collection|\TypiCMS\NestableCollection
      */
     public function all(array $with = [], $all = false);
-
-    /**
-     * Build a menu.
-     *
-     * @deprecated
-     *
-     * @param string $name menu name
-     *
-     * @return string html code of a menu
-     */
-    public function build($name);
 
     /**
      * Get a menu.
      *
      * @param string $name menu name
      *
-     * @return Collection nested collection
+     * @return \TypiCMS\Modules\Menus\Models\Menu|null
      */
     public function getMenu($name);
 }

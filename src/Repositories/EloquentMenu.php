@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Request;
 use TypiCMS\Modules\Core\Repositories\RepositoriesAbstract;
 use TypiCMS\Modules\Menus\Models\Menu;
+use TypiCMS\Modules\Menus\Models\Menulink;
+use TypiCMS\NestableCollection;
 
 class EloquentMenu extends RepositoriesAbstract implements MenuInterface
 {
@@ -23,7 +25,7 @@ class EloquentMenu extends RepositoriesAbstract implements MenuInterface
      * @param array $with Eager load related models
      * @param bool  $all  Show published or all
      *
-     * @return Collection|NestedCollection
+     * @return \Illuminate\Database\Eloquent\Collection|\TypiCMS\NestableCollection
      */
     public function all(array $with = [], $all = false)
     {
@@ -53,25 +55,11 @@ class EloquentMenu extends RepositoriesAbstract implements MenuInterface
     }
 
     /**
-     * Build a menu.
-     *
-     * @deprecated
-     *
-     * @param string $name menu name
-     *
-     * @return string html code of a menu
-     */
-    public function build($name)
-    {
-        return $this->render($name);
-    }
-
-    /**
      * Get a menu.
      *
      * @param string $name menu name
      *
-     * @return Model $menu nested collection
+     * @return \TypiCMS\Modules\Menus\Models\Menu|null
      */
     public function getMenu($name)
     {
@@ -90,7 +78,14 @@ class EloquentMenu extends RepositoriesAbstract implements MenuInterface
         return $menu;
     }
 
-    public function prepare($items = null)
+    /**
+     * Set href and classes for each items in collection.
+     *
+     * @param \TypiCMS\NestableCollection $items
+     *
+     * @return \TypiCMS\NestableCollection
+     */
+    public function prepare(NestableCollection $items = null)
     {
         $items->each(function ($item) {
             if ($item->has_categories) {
@@ -107,11 +102,11 @@ class EloquentMenu extends RepositoriesAbstract implements MenuInterface
      * 1. If menulink has url field, take it.
      * 2. If menulink has a page, take the uri of the page in the current locale.
      *
-     * @param Model $menulink
+     * @param \TypiCMS\Modules\Menus\Models\Menulink $menulink
      *
      * @return string uri
      */
-    public function setHref($menulink)
+    public function setHref(Menulink $menulink)
     {
         if ($menulink->url) {
             return $menulink->url;
@@ -120,17 +115,17 @@ class EloquentMenu extends RepositoriesAbstract implements MenuInterface
             return $menulink->page->uri();
         }
 
-        return '';
+        return '/';
     }
 
     /**
      * Take the classes from field and add active if needed.
      *
-     * @param Model $menulink
+     * @param \TypiCMS\Modules\Menus\Models\Menulink $menulink
      *
      * @return string classes
      */
-    public function setClass($menulink)
+    public function setClass(Menulink $menulink)
     {
         $classArray = preg_split('/ /', $menulink->class, null, PREG_SPLIT_NO_EMPTY);
         // add active class if current uri is equal to item uri or contains

@@ -1,17 +1,18 @@
 @section('js')
     <script src="{{ asset('components/ckeditor/ckeditor.js') }}"></script>
     <script src="{{ asset('js/admin/form.js') }}"></script>
-@stop
+@endsection
 
 @section('titleLeftButton')
     <a href="{{ route('admin.menus.edit', $menu->id) }}" title="{{ trans('menus::global.Back to menu') }}">
         <span class="text-muted fa fa-arrow-circle-left"></span><span class="sr-only">{{ trans('menus::global.Back to menu') }}</span>
     </a>
-@stop
+@endsection
 
-<div class="form-group">
+<div class="btn-toolbar">
     <button class="btn btn-primary" value="true" id="exit" name="exit" type="submit">@lang('validation.attributes.save and exit')</button>
     <button class="btn btn-default" type="submit">@lang('validation.attributes.save')</button>
+    @include('core::admin._lang-switcher', ['js' => true])
 </div>
 
 <div class="row">
@@ -22,31 +23,15 @@
     {!! BootForm::hidden('parent_id') !!}
 
     <div class="col-sm-6">
-
-        @include('core::admin._tabs-lang')
-
-        <div class="tab-content">
-
-            @foreach ($locales as $lang)
-
-            <div class="tab-pane fade @if ($locale == $lang)in active @endif" id="{{ $lang }}">
-
-                {!! BootForm::text(trans('validation.attributes.title'), $lang.'[title]') !!}
-                {!! BootForm::text(trans('validation.attributes.url'), $lang.'[url]')->placeholder('http://') !!}
-                <input type="hidden" name="{{ $lang }}[status]" value="0">
-                {!! BootForm::checkbox(trans('validation.attributes.online'), $lang.'[status]') !!}
-
-            </div>
-
-            @endforeach
-
-        </div>
-
+        {!! TranslatableBootForm::text(trans('validation.attributes.title'), 'title') !!}
+        {!! TranslatableBootForm::text(trans('validation.attributes.url'), 'url')->placeholder('http://') !!}
+        {!! TranslatableBootForm::hidden('status')->value(0) !!}
+        {!! TranslatableBootForm::checkbox(trans('validation.attributes.online'), 'status') !!}
     </div>
 
     <div class="col-sm-6">
         {!! BootForm::select(trans('validation.attributes.page_id'), 'page_id', Pages::allForSelect()) !!}
-        <input type="hidden" name="has_categories" value="0">
+        {!! BootForm::hidden('has_categories')->value(0) !!}
         {!! BootForm::checkbox(trans('validation.attributes.has_categories'), 'has_categories') !!}
         {!! BootForm::select(trans('validation.attributes.target'), 'target', ['' => trans('menus::global.Active tab'), '_blank' => trans('menus::global.New tab')]) !!}
         {!! BootForm::text(trans('validation.attributes.class'), 'class') !!}

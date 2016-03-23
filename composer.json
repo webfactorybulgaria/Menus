@@ -9,7 +9,6 @@
         }
     ],
     "require": {
-        "webfactorybulgaria/menulinks": "~4.0.0",
         "webfactorybulgaria/core": "~4.0.0"
     },
     "autoload": {

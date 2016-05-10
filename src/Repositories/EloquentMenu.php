@@ -127,15 +127,15 @@ class EloquentMenu extends RepositoriesAbstract implements MenuInterface
      */
     public function setClass(Menulink $menulink)
     {
+        $path = app('public.navigator')->pathToRoot();
+
         $classArray = preg_split('/ /', $menulink->class, null, PREG_SPLIT_NO_EMPTY);
-        // add active class if current uri is equal to item uri or contains
-        // item uri and is bigger than 3 to avoid homepage link always active ('/', '/lg')
-        $pattern = $menulink->href;
-        if (strlen($menulink->href) > 3) {
-            $pattern .= '*';
-        }
-        if (Request::is($pattern)) {
-            $classArray[] = 'active';
+
+        //find if link is present in the path
+        foreach ($path as $item) {
+            if($menulink->page_id == $item) {
+                $classArray[] = 'active';
+            }
         }
 
         return implode(' ', $classArray);

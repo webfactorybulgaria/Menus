@@ -2,7 +2,7 @@
 
 namespace TypiCMS\Modules\Menus\Models;
 
-use Dimsav\Translatable\Translatable;
+use TypiCMS\Modules\Core\Traits\Translatable;
 use Laracasts\Presenter\PresentableTrait;
 use TypiCMS\Modules\Core\Models\Base;
 use TypiCMS\Modules\History\Traits\Historable;
@@ -33,7 +33,7 @@ class Menu extends Base
         'status',
     ];
 
-    protected $appends = ['status', 'title'];
+    protected $appends = [];
 
     /**
      * Relations.

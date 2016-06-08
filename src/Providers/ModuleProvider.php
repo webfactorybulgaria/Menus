@@ -60,12 +60,10 @@ class ModuleProvider extends ServiceProvider
 
         $app->singleton('TypiCMS.menus', function (Application $app) {
             $with = [
-                'translations',
                 'menulinks' => function (HasMany $query) {
                     $query->online();
                 },
-                'menulinks.translations',
-                'menulinks.page.translations',
+                'menulinks.page',
             ];
 
             return $app->make('TypiCMS\Modules\Menus\Repositories\MenuInterface')->all($with);

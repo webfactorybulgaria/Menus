@@ -23,7 +23,7 @@ class EloquentMenulink extends RepositoriesAbstract implements MenulinkInterface
      */
     public function allFromMenu($id = null, $all = false)
     {
-        $query = $this->model->with('translations')
+        $query = $this->model
             ->order()
             ->where('menu_id', $menuId);
 

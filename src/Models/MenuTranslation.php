@@ -11,6 +11,6 @@ class MenuTranslation extends BaseTranslation
      */
     public function owner()
     {
-        return $this->belongsTo('TypiCMS\Modules\Menus\Models\Menu', 'menu_id');
+        return $this->belongsTo('TypiCMS\Modules\Menus\Models\Menu', 'menu_id')->withoutGlobalScopes();
     }
 }

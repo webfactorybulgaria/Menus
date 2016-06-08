@@ -16,6 +16,6 @@ class MenulinkTranslation extends BaseTranslation
 
     public function owner()
     {
-        return $this->belongsTo('TypiCMS\Modules\Menus\Models\Menulink', 'menulink_id');
+        return $this->belongsTo('TypiCMS\Modules\Menus\Models\Menulink', 'menulink_id')->withoutGlobalScopes();
     }
 }

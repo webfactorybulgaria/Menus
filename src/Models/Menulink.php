@@ -2,7 +2,7 @@
 
 namespace TypiCMS\Modules\Menus\Models;
 
-use Dimsav\Translatable\Translatable;
+use TypiCMS\Modules\Core\Traits\Translatable;
 use InvalidArgumentException;
 use Laracasts\Presenter\PresentableTrait;
 use Log;
@@ -47,7 +47,7 @@ class Menulink extends Base
         'status',
     ];
 
-    protected $appends = ['status', 'title'];
+    protected $appends = [];
 
     /**
      * A menulink belongs to a menu.
@@ -62,7 +62,7 @@ class Menulink extends Base
      */
     public function page()
     {
-        return $this->belongsTo('TypiCMS\Modules\Pages\Models\Page');
+        return $this->belongsTo('TypiCMS\Modules\Pages\Models\Page')->select(['pages.id', 'title', 'uri']);
     }
 
     /**

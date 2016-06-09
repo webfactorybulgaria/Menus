@@ -3,6 +3,7 @@
 namespace TypiCMS\Modules\Menus\Repositories;
 
 use Categories;
+use Navigator;
 use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Log;
@@ -127,7 +128,7 @@ class EloquentMenu extends RepositoriesAbstract implements MenuInterface
      */
     public function setClass(Menulink $menulink)
     {
-        $path = app('public.navigator')->pathToRoot();
+        $path = Navigator::pathToRoot();
 
         $classArray = preg_split('/ /', $menulink->class, null, PREG_SPLIT_NO_EMPTY);
 

@@ -29,29 +29,29 @@ class RouteServiceProvider extends ServiceProvider
             /*
              * Admin routes
              */
-            $router->get('admin/menus', ['as' => 'admin.menus.index', 'uses' => 'AdminController@index']);
-            $router->get('admin/menus/create', ['as' => 'admin.menus.create', 'uses' => 'AdminController@create']);
-            $router->get('admin/menus/{menu}/edit', ['as' => 'admin.menus.edit', 'uses' => 'AdminController@edit']);
-            $router->post('admin/menus', ['as' => 'admin.menus.store', 'uses' => 'AdminController@store']);
-            $router->put('admin/menus/{menu}', ['as' => 'admin.menus.update', 'uses' => 'AdminController@update']);
+            $router->get('admin/menus', 'AdminController@index')->name('admin::index-menus');
+            $router->get('admin/menus/create', 'AdminController@create')->name('admin::create-menu');
+            $router->get('admin/menus/{menu}/edit', 'AdminController@edit')->name('admin::edit-menu');
+            $router->post('admin/menus', 'AdminController@store')->name('admin::store-menu');
+            $router->put('admin/menus/{menu}', 'AdminController@update')->name('admin::update-menu');
 
-            $router->get('admin/menus/{menu}/menulinks', ['as' => 'admin.menus.menulinks.index', 'uses' => 'MenulinksAdminController@index']);
-            $router->get('admin/menus/{menu}/menulinks/create', ['as' => 'admin.menus.menulinks.create', 'uses' => 'MenulinksAdminController@create']);
-            $router->get('admin/menus/{menu}/menulinks/{menulink}/edit', ['as' => 'admin.menus.menulinks.edit', 'uses' => 'MenulinksAdminController@edit']);
-            $router->post('admin/menus/{menu}/menulinks', ['as' => 'admin.menus.menulinks.store', 'uses' => 'MenulinksAdminController@store']);
-            $router->put('admin/menus/{menu}/menulinks/{menulink}', ['as' => 'admin.menus.menulinks.update', 'uses' => 'MenulinksAdminController@update']);
-            $router->post('admin/menulinks/sort', ['as' => 'admin.menulinks.sort', 'uses' => 'MenulinksAdminController@sort']);
+            $router->get('admin/menus/{menu}/menulinks', 'MenulinksAdminController@index')->name('admin::index-menulinks');
+            $router->get('admin/menus/{menu}/menulinks/create', 'MenulinksAdminController@create')->name('admin::create-menulink');
+            $router->get('admin/menus/{menu}/menulinks/{menulink}/edit', 'MenulinksAdminController@edit')->name('admin::edit-menulink');
+            $router->post('admin/menus/{menu}/menulinks', 'MenulinksAdminController@store')->name('admin::store-menulink');
+            $router->put('admin/menus/{menu}/menulinks/{menulink}', 'MenulinksAdminController@update')->name('admin::update-menulink');
+            $router->post('admin/menulinks/sort', 'MenulinksAdminController@sort')->name('admin::sort-menulinks');
 
             /*
              * API routes
              */
-            $router->get('api/menus', ['as' => 'api.menus.index', 'uses' => 'ApiController@index']);
-            $router->put('api/menus/{menu}', ['as' => 'api.menus.update', 'uses' => 'ApiController@update']);
-            $router->delete('api/menus/{menu}', ['as' => 'api.menus.destroy', 'uses' => 'ApiController@destroy']);
+            $router->get('api/menus', 'ApiController@index')->name('api::index-menus');
+            $router->put('api/menus/{menu}', 'ApiController@update')->name('api::update-menu');
+            $router->delete('api/menus/{menu}', 'ApiController@destroy')->name('api::destroy-menu');
 
-            $router->get('api/menulinks', ['as' => 'api.menulinks.index', 'uses' => 'MenulinksApiController@index']);
-            $router->put('api/menulinks/{menulink}', ['as' => 'api.menulinks.update', 'uses' => 'MenulinksApiController@update']);
-            $router->delete('api/menulinks/{menulink}', ['as' => 'api.menulinks.destroy', 'uses' => 'MenulinksApiController@destroy']);
+            $router->get('api/menulinks', 'MenulinksApiController@index')->name('api::index-menulinks');
+            $router->put('api/menulinks/{menulink}', 'MenulinksApiController@update')->name('api::update-menulink');
+            $router->delete('api/menulinks/{menulink}', 'MenulinksApiController@destroy')->name('api::destroy-menulink');
         });
     }
 }

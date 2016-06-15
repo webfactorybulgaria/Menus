@@ -52,6 +52,7 @@ class EloquentMenu extends RepositoriesAbstract implements MenuInterface
      */
     public function render($name)
     {
+
         return view('menus::public._menu', ['name' => $name]);
     }
 

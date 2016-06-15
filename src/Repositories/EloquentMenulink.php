@@ -2,7 +2,6 @@
 
 namespace TypiCMS\Modules\Menus\Repositories;
 
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use TypiCMS\Modules\Core\Repositories\RepositoriesAbstract;
 
@@ -20,7 +19,6 @@ class EloquentMenulink extends RepositoriesAbstract implements MenulinkInterface
      * @param bool $all published or all
      *
      * @return Collection
-     */
     public function allFromMenu($id = null, $all = false)
     {
         $query = $this->model
@@ -36,6 +34,7 @@ class EloquentMenulink extends RepositoriesAbstract implements MenulinkInterface
 
         return $models;
     }
+     */
 
     /**
      * Get sort data.

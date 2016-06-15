@@ -19,7 +19,6 @@ class Menu extends Base
         'name',
         'class',
         // Translatable columns
-        'title',
         'status',
     ];
 
@@ -29,7 +28,6 @@ class Menu extends Base
      * @var array
      */
     public $translatedAttributes = [
-        'title',
         'status',
     ];
 
@@ -42,4 +40,5 @@ class Menu extends Base
     {
         return $this->hasMany('TypiCMS\Modules\Menus\Models\Menulink')->orderBy('position', 'asc');
     }
+
 }

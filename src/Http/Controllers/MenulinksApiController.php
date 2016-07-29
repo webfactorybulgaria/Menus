@@ -19,7 +19,7 @@ class MenulinksApiController extends BaseApiController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index()
+    public function index($builder = null)
     {
         $id = Request::input('menu_id');
         $models = $this->repository->allNestedBy('menu_id', $id, [], true);

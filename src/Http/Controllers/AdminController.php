@@ -49,6 +49,9 @@ class AdminController extends BaseAdminController
      */
     public function edit(Menu $menu)
     {
+        $models = app('TypiCMS\Modules\Menus\Repositories\MenulinkInterface')->allNestedBy('menu_id', $menu->id, [], true);
+        app('JavaScript')->put('models', $models);
+
         return view('menus::admin.edit')
             ->with(['model' => $menu]);
     }

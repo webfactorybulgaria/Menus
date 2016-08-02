@@ -87,7 +87,7 @@ class EloquentMenu extends RepositoriesAbstract implements MenuInterface
      *
      * @return \TypiCMS\NestableCollection
      */
-    public function prepare(NestableCollection $items = null)
+    public function prepare($items = null)
     {
         $items->each(function ($item) {
             if ($item->has_categories) {
@@ -108,7 +108,7 @@ class EloquentMenu extends RepositoriesAbstract implements MenuInterface
      *
      * @return string uri
      */
-    public function setHref(Menulink $menulink)
+    public function setHref($menulink)
     {
         if ($menulink->url) {
             return $menulink->url;
@@ -127,7 +127,7 @@ class EloquentMenu extends RepositoriesAbstract implements MenuInterface
      *
      * @return string classes
      */
-    public function setClass(Menulink $menulink)
+    public function setClass($menulink)
     {
         $path = Navigator::pathToRoot();
 

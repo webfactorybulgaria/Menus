@@ -2,12 +2,12 @@
 
 namespace TypiCMS\Modules\Menus\Models;
 
-use TypiCMS\Modules\Core\Traits\Translatable;
+use TypiCMS\Modules\Core\Custom\Traits\Translatable;
 use InvalidArgumentException;
 use Laracasts\Presenter\PresentableTrait;
 use Log;
-use TypiCMS\Modules\Core\Models\Base;
-use TypiCMS\Modules\History\Traits\Historable;
+use TypiCMS\Modules\Core\Custom\Models\Base;
+use TypiCMS\Modules\History\Custom\Traits\Historable;
 use TypiCMS\NestableTrait;
 
 class Menulink extends Base
@@ -17,7 +17,7 @@ class Menulink extends Base
     use PresentableTrait;
     use NestableTrait;
 
-    protected $presenter = 'TypiCMS\Modules\Menus\Presenters\MenulinkPresenter';
+    protected $presenter = 'TypiCMS\Modules\Menus\Custom\Presenters\MenulinkPresenter';
 
     protected $fillable = [
         'menu_id',
@@ -54,7 +54,7 @@ class Menulink extends Base
      */
     public function menu()
     {
-        return $this->belongsTo('TypiCMS\Modules\Menus\Models\Menu');
+        return $this->belongsTo('TypiCMS\Modules\Menus\Custom\Models\Menu');
     }
 
     /**
@@ -62,7 +62,7 @@ class Menulink extends Base
      */
     public function page()
     {
-        return $this->belongsTo('TypiCMS\Modules\Pages\Models\Page')->select(['pages.id', 'title', 'uri']);
+        return $this->belongsTo('TypiCMS\Modules\Pages\Custom\Models\Page')->select(['pages.id', 'title', 'uri']);
     }
 
     /**
@@ -70,7 +70,7 @@ class Menulink extends Base
      */
     public function children()
     {
-        return $this->hasMany('TypiCMS\Modules\Menus\Models\Menulink', 'parent_id');
+        return $this->hasMany('TypiCMS\Modules\Menus\Custom\Models\Menulink', 'parent_id');
     }
 
     /**
@@ -78,7 +78,7 @@ class Menulink extends Base
      */
     public function parent()
     {
-        return $this->belongsTo('TypiCMS\Modules\Menus\Models\Menulink', 'parent_id');
+        return $this->belongsTo('TypiCMS\Modules\Menus\Custom\Models\Menulink', 'parent_id');
     }
 
     /**

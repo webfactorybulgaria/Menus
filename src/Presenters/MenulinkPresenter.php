@@ -2,7 +2,7 @@
 
 namespace TypiCMS\Modules\Menus\Presenters;
 
-use TypiCMS\Modules\Core\Presenters\Presenter;
+use TypiCMS\Modules\Core\Custom\Presenters\Presenter;
 
 class MenulinkPresenter extends Presenter
 {

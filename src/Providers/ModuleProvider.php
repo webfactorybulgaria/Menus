@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
-use TypiCMS\Modules\Core\Services\Cache\LaravelCache;
-use TypiCMS\Modules\Menus\Models\Menu;
-use TypiCMS\Modules\Menus\Models\Menulink;
-use TypiCMS\Modules\Menus\Repositories\CacheDecorator;
-use TypiCMS\Modules\Menus\Repositories\EloquentMenu;
-use TypiCMS\Modules\Menus\Repositories\EloquentMenulink;
-use TypiCMS\Modules\Menus\Repositories\MenulinkCacheDecorator;
+use TypiCMS\Modules\Core\Custom\Services\Cache\LaravelCache;
+use TypiCMS\Modules\Menus\Custom\Models\Menu;
+use TypiCMS\Modules\Menus\Custom\Models\Menulink;
+use TypiCMS\Modules\Menus\Custom\Repositories\CacheDecorator;
+use TypiCMS\Modules\Menus\Custom\Repositories\EloquentMenu;
+use TypiCMS\Modules\Menus\Custom\Repositories\EloquentMenulink;
+use TypiCMS\Modules\Menus\Custom\Repositories\MenulinkCacheDecorator;
 
 class ModuleProvider extends ServiceProvider
 {
@@ -40,7 +40,7 @@ class ModuleProvider extends ServiceProvider
 
         AliasLoader::getInstance()->alias(
             'Menus',
-            'TypiCMS\Modules\Menus\Facades\Facade'
+            'TypiCMS\Modules\Menus\Custom\Facades\Facade'
         );
     }
 
@@ -51,12 +51,12 @@ class ModuleProvider extends ServiceProvider
         /*
          * Register route service provider
          */
-        $app->register('TypiCMS\Modules\Menus\Providers\RouteServiceProvider');
+        $app->register('TypiCMS\Modules\Menus\Custom\Providers\RouteServiceProvider');
 
         /*
          * Sidebar view composer
          */
-        $app->view->composer('core::admin._sidebar', 'TypiCMS\Modules\Menus\Composers\SidebarViewComposer');
+        $app->view->composer('core::admin._sidebar', 'TypiCMS\Modules\Menus\Custom\Composers\SidebarViewComposer');
 
         $app->singleton('TypiCMS.menus', function (Application $app) {
             $with = [
@@ -66,10 +66,10 @@ class ModuleProvider extends ServiceProvider
                 'menulinks.page',
             ];
 
-            return $app->make('TypiCMS\Modules\Menus\Repositories\MenuInterface')->all($with);
+            return $app->make('TypiCMS\Modules\Menus\Custom\Repositories\MenuInterface')->all($with);
         });
 
-        $app->bind('TypiCMS\Modules\Menus\Repositories\MenuInterface', function (Application $app) {
+        $app->bind('TypiCMS\Modules\Menus\Custom\Repositories\MenuInterface', function (Application $app) {
             $repository = new EloquentMenu(new Menu());
             if (!config('typicms.cache')) {
                 return $repository;
@@ -79,7 +79,7 @@ class ModuleProvider extends ServiceProvider
             return new CacheDecorator($repository, $laravelCache);
         });
 
-        $app->bind('TypiCMS\Modules\Menus\Repositories\MenulinkInterface', function (Application $app) {
+        $app->bind('TypiCMS\Modules\Menus\Custom\Repositories\MenulinkInterface', function (Application $app) {
             $repository = new EloquentMenulink(new Menulink());
             if (!config('typicms.cache')) {
                 return $repository;

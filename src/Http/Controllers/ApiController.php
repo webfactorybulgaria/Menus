@@ -3,9 +3,9 @@
 namespace TypiCMS\Modules\Menus\Http\Controllers;
 
 use Illuminate\Support\Facades\Request;
-use TypiCMS\Modules\Core\Http\Controllers\BaseApiController;
-use TypiCMS\Modules\Menus\Models\Menu;
-use TypiCMS\Modules\Menus\Repositories\MenuInterface as Repository;
+use TypiCMS\Modules\Core\Custom\Http\Controllers\BaseApiController;
+use TypiCMS\Modules\Menus\Custom\Models\Menu;
+use TypiCMS\Modules\Menus\Custom\Repositories\MenuInterface as Repository;
 
 class ApiController extends BaseApiController
 {
@@ -49,7 +49,7 @@ class ApiController extends BaseApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param \TypiCMS\Modules\Menus\Models\Menu $menu
+     * @param \TypiCMS\Modules\Menus\Custom\Models\Menu $menu
      *
      * @return \Illuminate\Http\JsonResponse
      */

@@ -2,8 +2,8 @@
 
 namespace TypiCMS\Modules\Menus\Repositories;
 
-use TypiCMS\Modules\Core\Repositories\CacheAbstractDecorator;
-use TypiCMS\Modules\Core\Services\Cache\CacheInterface;
+use TypiCMS\Modules\Core\Custom\Repositories\CacheAbstractDecorator;
+use TypiCMS\Modules\Core\Custom\Services\Cache\CacheInterface;
 
 class CacheDecorator extends CacheAbstractDecorator implements MenuInterface
 {
@@ -55,7 +55,7 @@ class CacheDecorator extends CacheAbstractDecorator implements MenuInterface
      *
      * @param string $name menu name
      *
-     * @return \TypiCMS\Modules\Menus\Models\Menu|null
+     * @return \TypiCMS\Modules\Menus\Custom\Models\Menu|null
      */
     public function getMenu($name)
     {

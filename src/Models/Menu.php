@@ -2,10 +2,10 @@
 
 namespace TypiCMS\Modules\Menus\Models;
 
-use TypiCMS\Modules\Core\Custom\Traits\Translatable;
+use TypiCMS\Modules\Core\Shells\Traits\Translatable;
 use Laracasts\Presenter\PresentableTrait;
-use TypiCMS\Modules\Core\Custom\Models\Base;
-use TypiCMS\Modules\History\Custom\Traits\Historable;
+use TypiCMS\Modules\Core\Shells\Models\Base;
+use TypiCMS\Modules\History\Shells\Traits\Historable;
 
 class Menu extends Base
 {
@@ -13,7 +13,7 @@ class Menu extends Base
     use Translatable;
     use PresentableTrait;
 
-    protected $presenter = 'TypiCMS\Modules\Menus\Custom\Presenters\ModulePresenter';
+    protected $presenter = 'TypiCMS\Modules\Menus\Shells\Presenters\ModulePresenter';
 
     protected $fillable = [
         'name',
@@ -38,7 +38,7 @@ class Menu extends Base
      */
     public function menulinks()
     {
-        return $this->hasMany('TypiCMS\Modules\Menus\Custom\Models\Menulink')->orderBy('position', 'asc');
+        return $this->hasMany('TypiCMS\Modules\Menus\Shells\Models\Menulink')->orderBy('position', 'asc');
     }
 
 }

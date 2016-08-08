@@ -2,10 +2,10 @@
 
 namespace TypiCMS\Modules\Menus\Http\Controllers;
 
-use TypiCMS\Modules\Core\Custom\Http\Controllers\BaseAdminController;
-use TypiCMS\Modules\Menus\Custom\Http\Requests\FormRequest;
-use TypiCMS\Modules\Menus\Custom\Models\Menu;
-use TypiCMS\Modules\Menus\Custom\Repositories\MenuInterface;
+use TypiCMS\Modules\Core\Shells\Http\Controllers\BaseAdminController;
+use TypiCMS\Modules\Menus\Shells\Http\Requests\FormRequest;
+use TypiCMS\Modules\Menus\Shells\Models\Menu;
+use TypiCMS\Modules\Menus\Shells\Repositories\MenuInterface;
 
 class AdminController extends BaseAdminController
 {
@@ -43,13 +43,13 @@ class AdminController extends BaseAdminController
     /**
      * Edit form for the specified resource.
      *
-     * @param \TypiCMS\Modules\Menus\Custom\Models\Menu $menu
+     * @param \TypiCMS\Modules\Menus\Shells\Models\Menu $menu
      *
      * @return \Illuminate\View\View
      */
     public function edit(Menu $menu)
     {
-        $models = app('TypiCMS\Modules\Menus\Custom\Repositories\MenulinkInterface')->allNestedBy('menu_id', $menu->id, [], true);
+        $models = app('TypiCMS\Modules\Menus\Shells\Repositories\MenulinkInterface')->allNestedBy('menu_id', $menu->id, [], true);
         app('JavaScript')->put('models', $models);
 
         return view('menus::admin.edit')
@@ -59,7 +59,7 @@ class AdminController extends BaseAdminController
     /**
      * Store a newly created resource in storage.
      *
-     * @param \TypiCMS\Modules\Menus\Custom\Http\Requests\FormRequest $request
+     * @param \TypiCMS\Modules\Menus\Shells\Http\Requests\FormRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -73,8 +73,8 @@ class AdminController extends BaseAdminController
     /**
      * Update the specified resource in storage.
      *
-     * @param \TypiCMS\Modules\Menus\Custom\Models\Menu               $menu
-     * @param \TypiCMS\Modules\Menus\Custom\Http\Requests\FormRequest $request
+     * @param \TypiCMS\Modules\Menus\Shells\Models\Menu               $menu
+     * @param \TypiCMS\Modules\Menus\Shells\Http\Requests\FormRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse
      */

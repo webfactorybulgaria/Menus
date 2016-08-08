@@ -2,8 +2,8 @@
 
 namespace TypiCMS\Modules\Menus\Repositories;
 
-use TypiCMS\Modules\Core\Custom\Repositories\CacheAbstractDecorator;
-use TypiCMS\Modules\Core\Custom\Services\Cache\CacheInterface;
+use TypiCMS\Modules\Core\Shells\Repositories\CacheAbstractDecorator;
+use TypiCMS\Modules\Core\Shells\Services\Cache\CacheInterface;
 
 class MenulinkCacheDecorator extends CacheAbstractDecorator implements MenulinkInterface
 {

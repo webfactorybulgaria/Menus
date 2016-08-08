@@ -8,9 +8,9 @@ use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Request;
-use TypiCMS\Modules\Core\Custom\Repositories\RepositoriesAbstract;
-use TypiCMS\Modules\Menus\Custom\Models\Menu;
-use TypiCMS\Modules\Menus\Custom\Models\Menulink;
+use TypiCMS\Modules\Core\Shells\Repositories\RepositoriesAbstract;
+use TypiCMS\Modules\Menus\Shells\Models\Menu;
+use TypiCMS\Modules\Menus\Shells\Models\Menulink;
 use TypiCMS\NestableCollection;
 
 class EloquentMenu extends RepositoriesAbstract implements MenuInterface
@@ -61,7 +61,7 @@ class EloquentMenu extends RepositoriesAbstract implements MenuInterface
      *
      * @param string $name menu name
      *
-     * @return \TypiCMS\Modules\Menus\Custom\Models\Menu|null
+     * @return \TypiCMS\Modules\Menus\Shells\Models\Menu|null
      */
     public function getMenu($name)
     {
@@ -104,7 +104,7 @@ class EloquentMenu extends RepositoriesAbstract implements MenuInterface
      * 1. If menulink has url field, take it.
      * 2. If menulink has a page, take the uri of the page in the current locale.
      *
-     * @param \TypiCMS\Modules\Menus\Custom\Models\Menulink $menulink
+     * @param \TypiCMS\Modules\Menus\Shells\Models\Menulink $menulink
      *
      * @return string uri
      */
@@ -123,7 +123,7 @@ class EloquentMenu extends RepositoriesAbstract implements MenuInterface
     /**
      * Take the classes from field and add active if needed.
      *
-     * @param \TypiCMS\Modules\Menus\Custom\Models\Menulink $menulink
+     * @param \TypiCMS\Modules\Menus\Shells\Models\Menulink $menulink
      *
      * @return string classes
      */

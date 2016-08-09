@@ -8,9 +8,9 @@ use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Request;
-use TypiCMS\Modules\Core\Repositories\RepositoriesAbstract;
-use TypiCMS\Modules\Menus\Models\Menu;
-use TypiCMS\Modules\Menus\Models\Menulink;
+use TypiCMS\Modules\Core\Shells\Repositories\RepositoriesAbstract;
+use TypiCMS\Modules\Menus\Shells\Models\Menu;
+use TypiCMS\Modules\Menus\Shells\Models\Menulink;
 use TypiCMS\NestableCollection;
 
 class EloquentMenu extends RepositoriesAbstract implements MenuInterface
@@ -61,7 +61,7 @@ class EloquentMenu extends RepositoriesAbstract implements MenuInterface
      *
      * @param string $name menu name
      *
-     * @return \TypiCMS\Modules\Menus\Models\Menu|null
+     * @return \TypiCMS\Modules\Menus\Shells\Models\Menu|null
      */
     public function getMenu($name)
     {
@@ -87,7 +87,7 @@ class EloquentMenu extends RepositoriesAbstract implements MenuInterface
      *
      * @return \TypiCMS\NestableCollection
      */
-    public function prepare(NestableCollection $items = null)
+    public function prepare($items = null)
     {
         $items->each(function ($item) {
             if ($item->has_categories) {
@@ -104,11 +104,11 @@ class EloquentMenu extends RepositoriesAbstract implements MenuInterface
      * 1. If menulink has url field, take it.
      * 2. If menulink has a page, take the uri of the page in the current locale.
      *
-     * @param \TypiCMS\Modules\Menus\Models\Menulink $menulink
+     * @param \TypiCMS\Modules\Menus\Shells\Models\Menulink $menulink
      *
      * @return string uri
      */
-    public function setHref(Menulink $menulink)
+    public function setHref($menulink)
     {
         if ($menulink->url) {
             return $menulink->url;
@@ -123,11 +123,11 @@ class EloquentMenu extends RepositoriesAbstract implements MenuInterface
     /**
      * Take the classes from field and add active if needed.
      *
-     * @param \TypiCMS\Modules\Menus\Models\Menulink $menulink
+     * @param \TypiCMS\Modules\Menus\Shells\Models\Menulink $menulink
      *
      * @return string classes
      */
-    public function setClass(Menulink $menulink)
+    public function setClass($menulink)
     {
         $path = Navigator::pathToRoot();
 

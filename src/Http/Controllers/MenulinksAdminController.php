@@ -3,11 +3,11 @@
 namespace TypiCMS\Modules\Menus\Http\Controllers;
 
 use Illuminate\Support\Facades\Request;
-use TypiCMS\Modules\Core\Http\Controllers\BaseAdminController;
-use TypiCMS\Modules\Menus\Http\Requests\MenulinkFormRequest;
-use TypiCMS\Modules\Menus\Models\Menu;
-use TypiCMS\Modules\Menus\Models\Menulink;
-use TypiCMS\Modules\Menus\Repositories\MenulinkInterface;
+use TypiCMS\Modules\Core\Shells\Http\Controllers\BaseAdminController;
+use TypiCMS\Modules\Menus\Shells\Http\Requests\MenulinkFormRequest;
+use TypiCMS\Modules\Menus\Shells\Models\Menu;
+use TypiCMS\Modules\Menus\Shells\Models\Menulink;
+use TypiCMS\Modules\Menus\Shells\Repositories\MenulinkInterface;
 
 class MenulinksAdminController extends BaseAdminController
 {
@@ -19,7 +19,7 @@ class MenulinksAdminController extends BaseAdminController
     /**
      * Create form for a new resource.
      *
-     * @param \TypiCMS\Modules\Menus\Models\Menu $menu
+     * @param \TypiCMS\Modules\Menus\Shells\Models\Menu $menu
      *
      * @return \Illuminate\View\View
      */
@@ -34,8 +34,8 @@ class MenulinksAdminController extends BaseAdminController
     /**
      * Edit form for the specified resource.
      *
-     * @param \TypiCMS\Modules\Menus\Models\Menu     $menu
-     * @param \TypiCMS\Modules\Menus\Models\Menulink $menulink
+     * @param \TypiCMS\Modules\Menus\Shells\Models\Menu     $menu
+     * @param \TypiCMS\Modules\Menus\Shells\Models\Menulink $menulink
      *
      * @return \Illuminate\View\View
      */
@@ -51,8 +51,8 @@ class MenulinksAdminController extends BaseAdminController
     /**
      * Store a newly created resource in storage.
      *
-     * @param \TypiCMS\Modules\Menus\Models\Menu                       $menu
-     * @param \TypiCMS\Modules\Menus\Http\Requests\MenulinkFormRequest $request
+     * @param \TypiCMS\Modules\Menus\Shells\Models\Menu                       $menu
+     * @param \TypiCMS\Modules\Menus\Shells\Http\Requests\MenulinkFormRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -70,9 +70,9 @@ class MenulinksAdminController extends BaseAdminController
     /**
      * Update the specified resource in storage.
      *
-     * @param \TypiCMS\Modules\Menus\Models\Menu                       $menu
-     * @param \TypiCMS\Modules\Menus\Models\Menulink                   $menulink
-     * @param \TypiCMS\Modules\Menus\Http\Requests\MenulinkFormRequest $request
+     * @param \TypiCMS\Modules\Menus\Shells\Models\Menu                       $menu
+     * @param \TypiCMS\Modules\Menus\Shells\Models\Menulink                   $menulink
+     * @param \TypiCMS\Modules\Menus\Shells\Http\Requests\MenulinkFormRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse
      */

@@ -2,7 +2,7 @@
 
 namespace TypiCMS\Modules\Menus\Models;
 
-use TypiCMS\Modules\Core\Models\BaseTranslation;
+use TypiCMS\Modules\Core\Shells\Models\BaseTranslation;
 
 class MenulinkTranslation extends BaseTranslation
 {
@@ -11,11 +11,11 @@ class MenulinkTranslation extends BaseTranslation
      */
     public function menulink()
     {
-        return $this->belongsTo('TypiCMS\Modules\Menus\Models\Menulink');
+        return $this->belongsTo('TypiCMS\Modules\Menus\Shells\Models\Menulink');
     }
 
     public function owner()
     {
-        return $this->belongsTo('TypiCMS\Modules\Menus\Models\Menulink', 'menulink_id')->withoutGlobalScopes();
+        return $this->belongsTo('TypiCMS\Modules\Menus\Shells\Models\Menulink', 'menulink_id')->withoutGlobalScopes();
     }
 }

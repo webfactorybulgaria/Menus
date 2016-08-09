@@ -3,9 +3,9 @@
 namespace TypiCMS\Modules\Menus\Http\Controllers;
 
 use Illuminate\Support\Facades\Request;
-use TypiCMS\Modules\Core\Http\Controllers\BaseApiController;
-use TypiCMS\Modules\Menus\Models\Menulink;
-use TypiCMS\Modules\Menus\Repositories\MenulinkInterface as Repository;
+use TypiCMS\Modules\Core\Shells\Http\Controllers\BaseApiController;
+use TypiCMS\Modules\Menus\Shells\Models\Menulink;
+use TypiCMS\Modules\Menus\Shells\Repositories\MenulinkInterface as Repository;
 
 class MenulinksApiController extends BaseApiController
 {
@@ -63,7 +63,7 @@ class MenulinksApiController extends BaseApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param \TypiCMS\Modules\Menulinks\Models\Menulink $menulink
+     * @param \TypiCMS\Modules\Menulinks\Shells\Models\Menulink $menulink
      *
      * @return \Illuminate\Http\JsonResponse
      */

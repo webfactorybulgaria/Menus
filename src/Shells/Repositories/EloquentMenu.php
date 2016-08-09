@@ -2,9 +2,9 @@
 
 namespace TypiCMS\Modules\Menus\Shells\Repositories;
 
-use TypiCMS\Modules\Menus\Repositories\EloquentMenu as Base;
+use TypiCMS\Modules\Menus\Repositories\EloquentMenu as BaseClass;
 
-class EloquentMenu extends Base implements MenuInterface
+class EloquentMenu extends BaseClass implements MenuInterface
 {
 
 }

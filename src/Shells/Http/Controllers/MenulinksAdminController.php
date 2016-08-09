@@ -2,9 +2,9 @@
 
 namespace TypiCMS\Modules\Menus\Shells\Http\Controllers;
 
-use TypiCMS\Modules\Menus\Http\Controllers\MenulinksAdminController as Base;
+use TypiCMS\Modules\Menus\Http\Controllers\MenulinksAdminController as BaseClass;
 
-class MenulinksAdminController extends Base
+class MenulinksAdminController extends BaseClass
 {
 
 }

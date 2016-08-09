@@ -2,9 +2,9 @@
 
 namespace TypiCMS\Modules\Menus\Shells\Models;
 
-use TypiCMS\Modules\Menus\Models\MenulinkTranslation as Base;
+use TypiCMS\Modules\Menus\Models\MenulinkTranslation as BaseClass;
 
-class MenulinkTranslation extends Base
+class MenulinkTranslation extends BaseClass
 {
 
 }

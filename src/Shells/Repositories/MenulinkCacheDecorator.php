@@ -2,9 +2,9 @@
 
 namespace TypiCMS\Modules\Menus\Shells\Repositories;
 
-use TypiCMS\Modules\Menus\Repositories\MenulinkCacheDecorator as Base;
+use TypiCMS\Modules\Menus\Repositories\MenulinkCacheDecorator as BaseClass;
 
-class MenulinkCacheDecorator extends Base implements MenulinkInterface
+class MenulinkCacheDecorator extends BaseClass implements MenulinkInterface
 {
 
 }

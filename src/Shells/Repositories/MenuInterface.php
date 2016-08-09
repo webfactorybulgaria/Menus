@@ -2,9 +2,9 @@
 
 namespace TypiCMS\Modules\Menus\Shells\Repositories;
 
-use TypiCMS\Modules\Menus\Repositories\MenuInterface as Base;
+use TypiCMS\Modules\Menus\Repositories\MenuInterface as BaseInterface;
 
-interface MenuInterface extends Base
+interface MenuInterface extends BaseInterface
 {
 
 }

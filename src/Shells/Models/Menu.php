@@ -2,9 +2,9 @@
 
 namespace TypiCMS\Modules\Menus\Shells\Models;
 
-use TypiCMS\Modules\Menus\Models\Menu as Base;
+use TypiCMS\Modules\Menus\Models\Menu as BaseClass;
 
-class Menu extends Base
+class Menu extends BaseClass
 {
 
 }

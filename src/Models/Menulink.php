@@ -62,7 +62,7 @@ class Menulink extends Base
      */
     public function page()
     {
-        return $this->belongsTo('TypiCMS\Modules\Pages\Shells\Models\Page')->select(['pages.id', 'title', 'uri']);
+        return $this->belongsTo('TypiCMS\Modules\Pages\Shells\Models\Page')->select(['pages.id', 'title', 'uri', 'status']);
     }
 
     /**

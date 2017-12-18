@@ -16,7 +16,7 @@ class MenulinkFormRequest extends AbstractFormRequest
         ];
         foreach (config('translatable.locales') as $locale) {
             $rules[$locale.'.title'] = 'max:255';
-            $rules[$locale.'.url'] = 'url|max:255';
+            $rules[$locale.'.url'] = 'max:255';
         }
 
         return $rules;

@@ -23,7 +23,7 @@ class CacheDecorator extends CacheAbstractDecorator implements MenuInterface
      */
     public function all(array $with = [], $all = false)
     {
-        $cacheKey = md5(config('app.locale').'all'.$all);
+        $cacheKey = md5($this->cachePrefix().'all'.$all);
 
         if ($this->cache->has($cacheKey)) {
             return $this->cache->get($cacheKey);
